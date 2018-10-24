@@ -6,12 +6,14 @@ var title;
 var weatherData;
 var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=Chicago&units=imperial&appid=fc3a29db9da406f9f26b2b3c16307c38", gotWeatherData;
 
-var windSpeed;
-var windX;
-var fillTemp;
-var currentWeather;
+var cloudiness;
+var tempMin;
+var tempMax;
+var tempur;
 
+var currentWeather;
 var randWeatherCast;
+var randWeatherCast2;
 
 //marvel datas
 var marvelCharData;
@@ -24,10 +26,7 @@ var gotMarvelData;
 var marvelImageBBuck;
 var marvelImageThor;
 var marvelImageBPan;
-var marvelImageSLord;
 var marvelImageSWitch;
-
-
 
 
 
@@ -38,7 +37,6 @@ function preload(){
 	marvelImageBBuck = loadImage("Images/BB.png");
 	marvelImageThor = loadImage("Images/Thor.png");
 	marvelImageBPan = loadImage("Images/BPanther.png");
-	marvelImageSLord = loadImage("Images/StarLord.png");
 	marvelImageSWitch = loadImage("Images/Switch.png");
 
 }
@@ -60,7 +58,6 @@ function chooseMarvel(){
 	button = createButton('Okay');
 	button.position(140, 150);
 	button.mousePressed(changeMarvel);
-	// marvelSelect.changed(changeMarvel);
 	
 }
 
@@ -71,7 +68,9 @@ function changeMarvel(){
 	 	console.log(marvelCharData.Characters[i].cast);
 	 	//for(var j=0; j< marvelCharData.Characters[i].cast.length; j++){
 	 		var randCast = int(random(0, marvelCharData.Characters[i].cast.length));
+	 		var randCast2 = int(random(0, marvelCharData.Characters[i].cast.length));
 	 		randWeatherCast = marvelCharData.Characters[i].cast[randCast];
+	 		randWeatherCast2 = marvelCharData.Characters[i].cast[randCast2];
 	 	//}
 	 	
 	 	loadJSON(marvelCharData, gotMarvelData);
@@ -89,8 +88,6 @@ function setup(){
 	canvas = createCanvas(windowWidth, windowHeight);
 	canvas.position(0, 0);
 	canvas.style("z-index", "-1");
-
-	windX = windowWidth/2;
 
 	// title = createElement('h1', " ");
 
@@ -118,11 +115,16 @@ function currentWeather(){
 
 	if(weatherData){
 		
-		textSize(40);
+		textSize(30);
 		fill(255, 249, 249);
 		text(randWeatherCast + " says they currently see " + weatherData.weather[0].description, 10, 40);
-		text(randWeatherCast + " tells you 'It is " + weatherData.main.temp + " degrees Fahrenheit right now'", 10, 90);
-		
+		text(randWeatherCast2 + " tells you 'It is " + weatherData.main.temp + " °F right now'", 10, 90);
+		textSize(15);
+		text("Cloudiness: " + cloudiness + "%", 200, 130);
+		text("Min Temp: " + tempMin + "°", 320, 130);
+		text("Current Temp: ", 440, 130);
+		text("Max Temp: " + tempMax + "°", 550, 130);
+
 		
 	}
 
@@ -130,37 +132,16 @@ function currentWeather(){
 
 function draw(){
 	// background(204, 24, 24);
-	// if(currentWeather){
-	windSpeed = weatherData.wind.speed;
-	windX = windX + windSpeed
-	rect(windX, windowHeight/2, 50, 50);
 
+	cloudiness = weatherData.clouds.all;
+	tempMin = weatherData.main.temp_min;
+	tempMax = weatherData.main.temp_max;
+	tempur = weatherData.main.temp;
 
-		if(windX > windowWidth){
-			windX = 0;
-		}
-	// }
-	
-	// textSize(30);
-}
+	image(marvelImageThor, 180, 160, cloudiness*2, cloudiness*2);
+	image(marvelImageSWitch, 320, 160, tempMin*2, tempMin*2);
+	image(marvelImageBBuck, 440, 160, tempur*2, tempur*2);
+	image(marvelImageBPan, 550, 160, tempMax*2, tempMax*2);
 
-function marvelImages(){
-
-	// if(marvelSelect.option("Avengers") == true){
-	// 	marvelImageSWitch(windX, windowHeight/2);
-	// }
-
-	// if(marvelSelect.option("Thor") == true){
-	// 	marvelImageThor;
-	// }
-	// if(marvelSelect.option("Captain America") == true){
-	// 	marvelImageBBuck
-	// }
-	// if(marvelSelect.option("Guardians of the Galaxy") == true){
-	// 	marvelImageSLord
-	// }
-	// if(marvelSelect.option("ETC.") == true){
-	// 	marvelImageBPan
-	// }
 
 }
