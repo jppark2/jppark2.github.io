@@ -1,0 +1,81 @@
+{
+	"Characters": [
+		{
+			"movie": "Avengers",
+			"cast": [
+				"Captain America",
+				"Iron Man",
+				"Spider-Man",
+				"Thor",
+				"Black Widow",
+				"Falcon",
+				"Ant-Man",
+				"Hulk",
+				"Hawkeye",
+				"Quicksilver",
+				"Scarlet Witch",
+				"Doctor Strange",
+				"Vision"
+
+			]
+
+		},
+
+		{
+			"movie": "Thor",
+			"cast": [
+				"Thor",
+				"Valkyrie",
+				"Loki",
+				"Hela",
+				"Hulk"
+			]
+
+		},
+
+		{
+			"movie": "Captain America",
+			"cast": [
+				"Bucky Barnes",
+				"Captain America",
+				"Peggy Carter",
+				"Nick Fury",
+				"Red Skull"
+			]
+
+		},
+
+		{
+			"movie": "Guardians of the Galaxy",
+			"cast": [
+				"Yondu",
+				"Star Lord",
+				"Gamora",
+				"Thanos",
+				"Rocket",
+				"Groot",
+				"Drax",
+				"Mantis",
+				"Nebula"
+
+			]
+
+		},
+
+		{
+			"movie": "ETC.",
+			"cast": [
+				"Black Panther",
+				"Captain Marvel",
+				"Wolverine",
+				"Venom",
+				"Shuri",
+				"Ultron",
+				"Wong",
+				"Killmonger",
+				"Nakia",
+				"Okoye"
+			]
+		}
+	]
+}
