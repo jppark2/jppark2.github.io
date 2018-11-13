@@ -37,7 +37,7 @@ function preload(){
 	marvelImageBBuck = loadImage("Images/BB.png");
 	marvelImageThor = loadImage("Images/Thor.png");
 	marvelImageBPan = loadImage("Images/BPanther.png");
-	marvelImageSWitch = loadImage("Images/Switch.png");
+	marvelImageSWitch = loadImage("Images/SWitch.png");
 
 }
 
