@@ -1,6 +1,6 @@
 var canvas;
 var noelBG;
-var videos = ['March 25', 'May 19', 'June 8', 'June 27', 'August 23', 'August 31', 'September 14', 'October 5', 'October 15', '2016 January 16', '2016 June 11', '2017 May 10'];
+var videos = ['March 25', 'May 19', 'June 8', 'August 23', 'August 31', 'September 14', 'October 15', '2016 January 16', '2016 June 11', '2017 May 10'];
 var vidDiary;
 var vidSelect;
 var audioBG;
