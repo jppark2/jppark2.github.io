@@ -2,6 +2,9 @@
 var canvas;
 var peep;
 var peeping;
+var song;
+var song2;
+var slider;
 
 //titles, headings, clickables
 var firstOption;
@@ -58,6 +61,10 @@ function setup(){
 	canvas.position(0, 0);
 	canvas.style('z-index', '-1');
 
+	song = createAudio("audio/Nobody Knows.mp3");
+	song2 = createAudio("audio/Memory.mp3");
+	
+	slider = createSlider(0, 1, 0.5, 0.01);
 	homeTitle = createElement('h1', " ");
 	firstOption = createA("#", "");
 	secondOption = createA("#", "");
@@ -79,6 +86,8 @@ function homepage(){
 	imageMode(CENTER);
 	peeping = image(peep, 52, windowHeight-200);
 
+	slider.position(5, windowHeight-350);
+
 	homeTitle.hide();
 	firstOption.hide();
 	secondOption.hide();
@@ -92,7 +101,10 @@ function homepage(){
 	eating.hide();
 
 	fill(0, 0, 0, 128);
-	rect(8, 70, 120, 130, 10);
+	rect(8, 70, 120, 190, 10);
+	fill(255);
+	textSize(10);
+	text("Press 'n' for 'Nobody Knows by 'kenai.'; 'm' for 'Memory' by Toby Fox", 20, 200, 100, 180);
 
 	homeTitle = createElement("h1", "It's all about ME!");
 	firstOption = createA("#", "About Me");
@@ -370,11 +382,27 @@ function windowResized() {
 }
 
 function draw(){
+	song.volume(slider.value());
+	song2.volume(slider.value());
 	imageMode(CENTER);
 	image(peep, 52, windowHeight-200);
 }
 
-function mouseClicked(){
+function keyPressed(){
+	if(key == 'm' || key == 'M'){
+		song.stop();
+		song2.play();
+		song2.loop();
+	}
+	if(key == 'n' || key == 'N'){
+		song2.stop();
+		song.play();
+		song.loop();
+	}
+
+}
+
+function mousePressed(){
 	var clickM = dist(mouseX, mouseY, 52, windowHeight-200);
 	if(clickM <100){
 		fill(255, 224, 236);
